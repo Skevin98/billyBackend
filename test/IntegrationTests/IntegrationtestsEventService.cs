@@ -3,6 +3,7 @@ using api.Event.Models;
 using api.Event.Repositories;
 using api.Event.Services;
 using api.Event.Services.Impl;
+using api.Event.Utils;
 using api.Shared;
 using test.Mocks;
 using FluentAssertions;
@@ -18,7 +19,7 @@ public class IntegrationtestsEventService : IDisposable
     private IEventRepository _repository;
     private IEventService _service;
     private readonly string ownerId = "owner";
-    private string? eventId = "673cdffdbca3737b6158cccf";
+    private string? eventId = "6749b8d38f421d74b5787c1e";
     private string? badEventId = "fffcdffdbca3737b6158cccf";
     private EventInput eventInput;
     private EventInput badEventInput;
@@ -34,10 +35,10 @@ public class IntegrationtestsEventService : IDisposable
         _repository = new MockEventRepositoryImpl(); 
         _service = new EventServiceImpl(_repository);
         eventInput = new EventInput("new-owner",DateTime.UtcNow, DateTime.UtcNow.AddDays(1), 
-            "Fake Event","Fake event description" );
+            "Fake Event", EventStatus.SCHEDULED,description: "Fake event description" );
         
         badEventInput = new EventInput(null,DateTime.UtcNow, DateTime.UtcNow.AddDays(1), 
-            "","Fake event description" );
+            "", EventStatus.SCHEDULED,description: "Fake event description" );
     }
 
     public void Dispose()

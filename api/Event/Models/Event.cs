@@ -1,4 +1,5 @@
 using System.Globalization;
+using api.Event.Utils;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
@@ -7,7 +8,8 @@ namespace api.Event.Models;
 public class Event
 {
     public Event(string? id, string? ownerId, string name, string? description, 
-        DateTime? startDate, DateTime? endDate, DateTime? createdDate = null, DateTime? lastModifiedDate = null)
+        DateTime? startDate, DateTime? endDate, EventStatus status, 
+        DateTime? createdDate = null, DateTime? lastModifiedDate = null)
     {
         Id = id;
         OwnerId = ownerId;
@@ -17,6 +19,7 @@ public class Event
         Name = name;
         CreatedDate = createdDate ?? DateTime.UtcNow;
         LastModifiedDate = lastModifiedDate;
+        EventStatus = status;
     }
 
     public Event(EventInput eventInput)
@@ -29,6 +32,7 @@ public class Event
         EndDate = eventInput.EndDate;
         CreatedDate = eventInput.CreatedDate ?? DateTime.UtcNow;
         LastModifiedDate = eventInput.LastModifiedDate ?? null;
+        EventStatus = eventInput.EventStatus;
     }
 
     [ID]
@@ -41,4 +45,6 @@ public class Event
     public DateTime? CreatedDate { get; set; }
     public string Name { get; set; }
     public string? Description { get; set; }
+    [BsonRepresentation(BsonType.String)]
+    public EventStatus EventStatus { get; set; }
 }

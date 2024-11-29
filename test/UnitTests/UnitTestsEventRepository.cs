@@ -1,6 +1,7 @@
 using api.Event.Impl;
 using api.Event.Models;
 using api.Event.Repositories;
+using api.Event.Utils;
 using api.Shared;
 using FluentAssertions;
 using test.Mocks;
@@ -19,7 +20,7 @@ public class UnitTestsEventRepository : IDisposable
     private DateTime startDate = DateTime.Now.AddDays(3);
     private DateTime endDate = DateTime.Now.AddDays(6);
     private string ownerId = "new-owner";
-    private string eventId = "673cdffdbca3737b6158cccf";
+    private string eventId = "6749b8d38f421d74b5787c1e";
     private string fakeEventId = "63f8e9b8a9a72b4c2fceffff";
     private Event newDummyEvent;
     private Event updateDummyEvent;
@@ -39,10 +40,10 @@ public class UnitTestsEventRepository : IDisposable
         
         newDummyEvent = new Event(null, ownerId,
             name, description,
-            startDate, endDate);
-        updateDummyEvent = new Event("673cdffdbca3737b6158cccf", ownerId,
+            startDate, endDate, EventStatus.SCHEDULED);
+        updateDummyEvent = new Event("6749b8d38f421d74b5787c1e", ownerId,
             name, description,
-            startDate, endDate, lastModifiedDate: DateTime.Now);
+            startDate, endDate, lastModifiedDate: DateTime.Now, status: EventStatus.SCHEDULED);
     }
 
     public void Dispose()

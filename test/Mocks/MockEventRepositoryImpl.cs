@@ -1,5 +1,6 @@
 using api.Event.Models;
 using api.Event.Repositories;
+using api.Event.Utils;
 
 namespace test.Mocks;
 
@@ -56,12 +57,12 @@ public class MockEventRepositoryImpl : IEventRepository
 
             var ev = new Event(i.ToString(), ownerId, 
                 $"event {i}", $"description of event {i}",
-                DateTime.Now, DateTime.Now.AddDays(1));
+                DateTime.Now, DateTime.Now.AddDays(1), status: EventStatus.SCHEDULED);
             events.Add(ev);
         }
-        var updateEv = new Event("673cdffdbca3737b6158cccf", "new-owner", 
+        var updateEv = new Event("6749b8d38f421d74b5787c1e", "new-owner", 
             $"event 63f8e9b8a9a72b4c2fceffff", $"description of event 63f8e9b8a9a72b4c2fceffff",
-            DateTime.Now, DateTime.Now.AddDays(1));
+            DateTime.Now, DateTime.Now.AddDays(1), status: EventStatus.SCHEDULED);
         
         events.Add(updateEv);
 

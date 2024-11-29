@@ -1,9 +1,13 @@
+using api.Event.Utils;
+
 namespace api.Event.Models;
 
 public class EventInput
 {
 
-    public EventInput(string? ownerId, DateTime? startDate, DateTime? endDate, string name, string? description = null, 
+    public EventInput(string? ownerId, DateTime? startDate, DateTime? endDate, string name,
+        EventStatus eventStatus,
+        string? description = null,
         DateTime? lastModifiedDate = null, DateTime? createdDate = null, string? id = null)
     {
         Id = id;
@@ -14,6 +18,7 @@ public class EventInput
         Description = description;
         LastModifiedDate = lastModifiedDate;
         CreatedDate = createdDate;
+        EventStatus = eventStatus;
     }
 
     public string? Id { get; set; }
@@ -24,4 +29,5 @@ public class EventInput
     public DateTime? CreatedDate { get; set; }
     public string Name { get; set; }
     public string? Description { get; set; }
+    public EventStatus EventStatus { get; set; }
 }
