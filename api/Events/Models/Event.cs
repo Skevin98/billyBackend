@@ -1,9 +1,9 @@
-using System.Globalization;
 using api.Event.Utils;
+using api.Tickets.Models;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
-namespace api.Event.Models;
+namespace api.Events.Models;
 
 public class Event
 {
@@ -47,4 +47,6 @@ public class Event
     public string? Description { get; set; }
     [BsonRepresentation(BsonType.String)]
     public EventStatus EventStatus { get; set; }
+
+    public List<TicketType>? TicketTypes { get; set; } = [];
 }

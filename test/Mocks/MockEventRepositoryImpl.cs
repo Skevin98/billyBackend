@@ -1,6 +1,6 @@
-using api.Event.Models;
-using api.Event.Repositories;
 using api.Event.Utils;
+using api.Events.Models;
+using api.Events.Repositories;
 
 namespace test.Mocks;
 

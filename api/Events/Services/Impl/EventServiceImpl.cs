@@ -1,7 +1,8 @@
-using api.Event.Models;
-using api.Event.Models.Validators;
-using api.Event.Repositories;
+using api.Events.Models;
+using api.Events.Repositories;
+using api.Events.Services;
 using api.Shared.Models;
+using api.Shared.Validators;
 using FluentValidation;
 using KeyNotFoundException = System.Collections.Generic.KeyNotFoundException;
 
@@ -16,25 +17,25 @@ public class EventServiceImpl : IEventService
         _eventRepository = repository;
     }
 
-    public async Task<Models.Event?> GetById(string eventId)
+    public async Task<Events.Models.Event?> GetById(string eventId)
     {
         var ev = await _eventRepository.GetByIdAsync(eventId);
         return ev;
     }
 
-    public async Task<List<Models.Event>> GetByOwnerId(string ownerId)
+    public async Task<List<Events.Models.Event>> GetByOwnerId(string ownerId)
     {
         var events = await _eventRepository.GetByOwnerIdAsync(ownerId);
         return events;
     }
 
-    public async Task<Models.Event> Create(EventInput eventInput)
+    public async Task<Events.Models.Event> Create(EventInput eventInput)
     {
         try
         {
             EventInputValidator validator = new EventInputValidator();
             validator.ValidateAndThrow(eventInput);
-            var evToCreate = new Models.Event(eventInput);
+            var evToCreate = new Events.Models.Event(eventInput);
             await _eventRepository.CreateAsync(evToCreate);
             var createdEvent = await _eventRepository.GetByIdAsync(evToCreate.Id);
             return createdEvent;
@@ -46,7 +47,7 @@ public class EventServiceImpl : IEventService
         }
     }
 
-    public async Task<Models.Event> Update(EventInput eventInput, string eventId)
+    public async Task<Events.Models.Event> Update(EventInput eventInput, string eventId)
     {
         try
         {
@@ -54,7 +55,7 @@ public class EventServiceImpl : IEventService
             if (evToUpdate == null)
                 throw new KeyNotFoundException($"Event with Id {eventId} not found.");
             eventInput.Id = eventId;
-            var input = new Models.Event(eventInput);
+            var input = new Events.Models.Event(eventInput);
             input.LastModifiedDate = DateTime.UtcNow;
             var updatedEvent = await _eventRepository.UpdateAsync(eventId, input);
             return updatedEvent;

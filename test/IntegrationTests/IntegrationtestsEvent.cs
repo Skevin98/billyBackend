@@ -1,9 +1,9 @@
-using api.Event.Impl;
-using api.Event.Models;
-using api.Event.Repositories;
 using api.Event.Services;
 using api.Event.Services.Impl;
 using api.Event.Utils;
+using api.Events.Models;
+using api.Events.Repositories;
+using api.Events.Services;
 using api.Shared;
 using test.Mocks;
 using FluentAssertions;
@@ -12,7 +12,7 @@ using Xunit.Abstractions;
 
 namespace test.IntegrationTests;
 
-public class IntegrationtestsEventService : IDisposable
+public class IntegrationtestsEvent : IDisposable
 {
     private readonly ITestOutputHelper _testOutputHelper;
     private DatabaseSettings options;
@@ -24,7 +24,7 @@ public class IntegrationtestsEventService : IDisposable
     private EventInput eventInput;
     private EventInput badEventInput;
 
-    public IntegrationtestsEventService(ITestOutputHelper testOutputHelper)
+    public IntegrationtestsEvent(ITestOutputHelper testOutputHelper)
     {
         _testOutputHelper = testOutputHelper;
         options = new DatabaseSettings();

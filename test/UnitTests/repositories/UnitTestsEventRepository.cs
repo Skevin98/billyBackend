@@ -1,7 +1,7 @@
-using api.Event.Impl;
-using api.Event.Models;
-using api.Event.Repositories;
 using api.Event.Utils;
+using api.Events.Models;
+using api.Events.Repositories;
+using api.Events.Repositories.Impl;
 using api.Shared;
 using FluentAssertions;
 using test.Mocks;
@@ -24,7 +24,7 @@ public class UnitTestsEventRepository : IDisposable
     private string fakeEventId = "63f8e9b8a9a72b4c2fceffff";
     private Event newDummyEvent;
     private Event updateDummyEvent;
-    private bool withMock = false;
+    private bool withMock = true;
 
     public UnitTestsEventRepository(ITestOutputHelper testOutputHelper)
     {

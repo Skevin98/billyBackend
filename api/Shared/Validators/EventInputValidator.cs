@@ -1,6 +1,7 @@
+using api.Events.Models;
 using FluentValidation;
 
-namespace api.Event.Models.Validators;
+namespace api.Shared.Validators;
 
 public class EventInputValidator : AbstractValidator<EventInput>
 {

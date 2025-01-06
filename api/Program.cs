@@ -1,9 +1,14 @@
-using api.Event.Impl;
-using api.Event.Repositories;
 using api.Event.Services;
 using api.Event.Services.Impl;
+using api.Events.Repositories;
+using api.Events.Repositories.Impl;
+using api.Events.Services;
 using api.Schemas;
 using api.Shared;
+using api.Tickets.Repositories;
+using api.Tickets.Repositories.Impl;
+using api.Tickets.Services;
+using api.Tickets.Services.Impl;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,6 +27,9 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IEventRepository, EventRepositoryImpl>();
 builder.Services.AddScoped<IEventService, EventServiceImpl>();
+
+builder.Services.AddScoped<ITicketTypeRepository, TicketTypeRepositoryImpl>();
+builder.Services.AddScoped<ITicketTypeService, TicketTypeServiceImpl>();
 
 builder.Services.AddCors(
     options =>

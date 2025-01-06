@@ -1,6 +1,6 @@
 using api.Event.Utils;
 
-namespace api.Event.Models;
+namespace api.Events.Models;
 
 public class EventInput
 {
