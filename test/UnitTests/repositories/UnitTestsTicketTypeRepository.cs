@@ -6,7 +6,7 @@ using api.Tickets.Repositories.Impl;
 using FluentAssertions;
 using test.Mocks;
 
-namespace test.UnitTests;
+namespace test.UnitTests.repositories;
 
 public class UnitTestsTicketTypeRepository : IDisposable
 {

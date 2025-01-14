@@ -31,4 +31,6 @@ public class TicketType
     public DateTime? LastModifiedDate { get; set; }
     
     public DateTime? CreatedDate { get; set; } = DateTime.UtcNow;
+
+    public int TicketsSold { get; set; } = 0;
 }

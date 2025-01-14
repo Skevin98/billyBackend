@@ -7,7 +7,7 @@ using FluentAssertions;
 using test.Mocks;
 using Xunit.Abstractions;
 
-namespace test.UnitTests;
+namespace test.UnitTests.repositories;
 
 public class UnitTestsEventRepository : IDisposable
 {
