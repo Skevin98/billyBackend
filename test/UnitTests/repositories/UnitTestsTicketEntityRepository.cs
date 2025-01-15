@@ -15,12 +15,12 @@ public class UnitTestsTicketEntityRepository: IDisposable
 {
     private readonly ITestOutputHelper _testOutputHelper;
     private ITicketEntityRepository _repository;
-    private bool withMock = true;
+    private bool withMock = false;
     private TicketEntity dummyTicket;
     private const string eventId = "63f8ebd7e6b27d1f45ef05b5";
     private const string ticketTypeId = "677be50cd5238983a28e8a6b";
     private UserEntity dummyUser;
-    private string dummyUserId = new Guid().ToString();
+    private string dummyUserId = "6787f20c9a1a3e6163533ff3";
     private string ticketId = "xxx";
 
     public UnitTestsTicketEntityRepository(ITestOutputHelper testOutputHelper)
@@ -29,7 +29,7 @@ public class UnitTestsTicketEntityRepository: IDisposable
         var options = new DatabaseSettings();
         options.DatabaseName = "BillyDBTest";
         options.ConnectionString = "mongodb://localhost:27017";
-        options.EventCollectionName = "Events";
+        options.UserCollectionName = "Users";
         
         _repository = withMock
             ? new MockTicketEntityRepositoryImpl()

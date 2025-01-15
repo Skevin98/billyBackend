@@ -20,5 +20,6 @@ public class TicketEntity
     
     public DateTime? CreatedDate { get; set; } = DateTime.UtcNow;
 
+    [BsonRepresentation(BsonType.String)]
     public TicketStatus Status { get; set; } = TicketStatus.CREATED;
 }

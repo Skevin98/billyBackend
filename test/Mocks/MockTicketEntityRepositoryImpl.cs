@@ -19,7 +19,7 @@ public class MockTicketEntityRepositoryImpl : ITicketEntityRepository
     private DateTime startDate = DateTime.Now.AddDays(3);
     private DateTime endDate = DateTime.Now.AddDays(6);
     private UserEntity dummyUser;
-    private string dummyUserId = new Guid().ToString();
+    private string dummyUserId = "6787f20c9a1a3e6163533ff3";
 
     public MockTicketEntityRepositoryImpl()
     {
