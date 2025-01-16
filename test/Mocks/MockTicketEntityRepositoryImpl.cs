@@ -43,20 +43,20 @@ public class MockTicketEntityRepositoryImpl : ITicketEntityRepository
         
         dummyUser.TicketsPurchased.Add(new TicketEntity
         {
-            Id = "xxx",
+            Id = "67894f296c2baf05f617487d",
             Status = TicketStatus.SOLD,
             EventId = eventId,
             TicketTypeId =ticketTypeId,
             Order = "billy-1"
         });
     }
-    public Task<TicketEntity> Create(string eventId, string ticketTypeId,string userId, TicketEntity dummyTicket)
+    public Task<TicketEntity> Create(string userId, TicketEntity dummyTicket)
     {
-        if (this.ticketTypeId != ticketTypeId)
+        if (this.ticketTypeId != dummyTicket.TicketTypeId)
         {
             throw new Exception("Ticket type not found");
         }
-        if (this.eventId != eventId)
+        if (this.eventId != dummyTicket.EventId)
         {
             throw new Exception("Event not found");
         }
@@ -66,7 +66,7 @@ public class MockTicketEntityRepositoryImpl : ITicketEntityRepository
         return Task.FromResult(dummyTicket);
     }
 
-    public Task<TicketEntity> Update(string ticketTypeId, string dummyUserId, string ticketId,TicketEntity payload)
+    public Task<TicketEntity> Update(string dummyUserId, string ticketId,TicketEntity payload)
     {
         var ticketIndexToUpdate = dummyUser.TicketsPurchased.FindIndex(t => t.Id == ticketId);
         if (ticketIndexToUpdate == -1)

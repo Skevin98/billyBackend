@@ -9,6 +9,10 @@ using api.Tickets.Repositories;
 using api.Tickets.Repositories.Impl;
 using api.Tickets.Services;
 using api.Tickets.Services.Impl;
+using api.Users.Repositories;
+using api.Users.Repositories.Impl;
+using api.Users.Services;
+using api.Users.Services.Impl;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,7 +21,8 @@ builder.Services.Configure<DatabaseSettings>(
 
 builder.Services.AddGraphQLServer()
     .AddQueryType<Query>()
-    .AddMutationType<Mutation>();
+    .AddMutationType<Mutation>()
+    .AddFiltering();
 // .AddErrorFilter<GraphQLErrorFilter>()
 
 // Add services to the container.
@@ -30,6 +35,9 @@ builder.Services.AddScoped<IEventService, EventServiceImpl>();
 
 builder.Services.AddScoped<ITicketTypeRepository, TicketTypeRepositoryImpl>();
 builder.Services.AddScoped<ITicketTypeService, TicketTypeServiceImpl>();
+
+builder.Services.AddScoped<IUserRepository, UserRepositoryImpl>();
+builder.Services.AddScoped<IUserService, UserServiceImpl>();
 
 builder.Services.AddCors(
     options =>

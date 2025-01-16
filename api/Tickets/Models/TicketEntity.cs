@@ -4,6 +4,7 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace api.Tickets.Models;
 
+
 public class TicketEntity
 {
     [ID]

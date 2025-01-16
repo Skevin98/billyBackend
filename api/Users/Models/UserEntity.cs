@@ -10,6 +10,7 @@ public class UserEntity
     [BsonRepresentation(BsonType.ObjectId)]
     public string? Id { get; set; }
 
+    [UseFiltering]
     public List<TicketEntity> TicketsPurchased { get; set; } = [];
     
     public DateTime? LastModifiedDate { get; set; }

@@ -4,6 +4,8 @@ using api.Events.Models;
 using api.Events.Services;
 using api.Tickets.Models;
 using api.Tickets.Services;
+using api.Users.Models;
+using api.Users.Services;
 
 namespace api.Schemas;
 
@@ -33,6 +35,12 @@ public class Query
     {
         var type = await ticketService.GetByEventIdAndTicketTypeId(eventId, typeId);
         return type;
+    }
+    
+    public async Task<UserEntity?> UserById(string id, IUserService userService)
+    {
+        var user = await userService.getUserById(id);
+        return user;
     }
     
 }
