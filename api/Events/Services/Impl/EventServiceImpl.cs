@@ -1,12 +1,11 @@
 using api.Events.Models;
 using api.Events.Repositories;
 using api.Events.Services;
-using api.Shared.Models;
 using api.Shared.Validators;
 using FluentValidation;
 using KeyNotFoundException = System.Collections.Generic.KeyNotFoundException;
 
-namespace api.Event.Services.Impl;
+namespace api.Events.Services.Impl;
 
 public class EventServiceImpl : IEventService
 {
@@ -43,7 +42,7 @@ public class EventServiceImpl : IEventService
         catch (ValidationException e)
         {
             Console.WriteLine(e);
-            throw;
+            throw new GraphQLException(e.Message);
         }
     }
 

@@ -7,6 +7,21 @@ namespace api.Tickets.Models;
 
 public class TicketEntity
 {
+    public static TicketEntity FromInput(TicketEntityInput input)
+    {
+        var entity = new TicketEntity
+        {
+            Id = input.Id,
+            EventId = input.EventId,
+            TicketTypeId = input.TicketTypeId,
+            Order = input.Order,
+            Status = input.Status ?? TicketStatus.CREATED,
+            CreatedDate = input.CreatedDate ?? DateTime.UtcNow,
+            LastModifiedDate = input.LastModifiedDate ?? null
+        };
+         return entity;
+    }
+    
     [ID]
     [BsonRepresentation(BsonType.ObjectId)]
     public string Id { get; set; }

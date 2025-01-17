@@ -1,5 +1,5 @@
-using api.Event.Services;
-using api.Event.Services.Impl;
+using api.Events.Services;
+using api.Events.Services.Impl;
 using api.Events.Repositories;
 using api.Events.Repositories.Impl;
 using api.Events.Services;
@@ -38,6 +38,9 @@ builder.Services.AddScoped<ITicketTypeService, TicketTypeServiceImpl>();
 
 builder.Services.AddScoped<IUserRepository, UserRepositoryImpl>();
 builder.Services.AddScoped<IUserService, UserServiceImpl>();
+
+builder.Services.AddScoped<ITicketEntityRepository, TicketEntityRepositoryImpl>();
+builder.Services.AddScoped<ITicketEntityService, TicketEntityServiceImpl>();
 
 builder.Services.AddCors(
     options =>

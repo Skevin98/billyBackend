@@ -1,5 +1,5 @@
-using api.Event.Services;
-using api.Event.Services.Impl;
+using api.Events.Services;
+using api.Events.Services.Impl;
 using api.Event.Utils;
 using api.Events.Models;
 using api.Events.Repositories;

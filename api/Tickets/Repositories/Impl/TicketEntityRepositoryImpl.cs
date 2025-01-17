@@ -76,7 +76,7 @@ public class TicketEntityRepositoryImpl : ITicketEntityRepository
 
         if (!await temp.AnyAsync())
         {
-            throw new Exception("Ticket or user not found");
+            throw new GraphQLException("Ticket or user not found");
         }
         
         var tickets = await _collection.FindOneAndUpdateAsync(
