@@ -24,6 +24,13 @@ public class Query
         return ev;
     }
 
+    [UseFiltering]
+    public async Task<List<Events.Models.Event>> AllEvents(IEventService eventService)
+    {
+        var events = await eventService.GetAll();
+        return events;
+    }
+
     public async Task<List<TicketType>> TicketsByEventId(string eventId, ITicketTypeService ticketService)
     {
         var type = await ticketService.GetAllByEventId(eventId);

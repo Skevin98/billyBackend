@@ -6,4 +6,5 @@ public interface IEventRepository
     Task<List<Events.Models.Event>> GetByOwnerIdAsync(string owner);
     Task<Events.Models.Event> CreateAsync(Events.Models.Event payload);
     Task<Events.Models.Event?> UpdateAsync(string eventId, Events.Models.Event payload);
+    Task<List<Models.Event>> GetAll();
 }

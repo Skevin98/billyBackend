@@ -44,6 +44,11 @@ public class MockEventRepositoryImpl : IEventRepository
         return Task.FromResult(ev);
     }
 
+    public Task<List<Event>> GetAll()
+    {
+        return Task.FromResult(events);
+    }
+
     private List<Event> GetEventList()
     {
         var events = new List<Event>();

@@ -57,4 +57,10 @@ public class EventRepositoryImpl : IEventRepository
         var res = await _collection.UpdateOneAsync(filter, update);
         return _collection.Find(e => e.Id == eventId).FirstOrDefaultAsync().Result;
     }
+
+    public async Task<List<Models.Event>> GetAll()
+    {
+        var list = await _collection.FindAsync(@event => true).Result.ToListAsync(); 
+        return list;
+    }
 }

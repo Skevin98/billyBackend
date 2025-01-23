@@ -5,6 +5,7 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace api.Events.Models;
 
+
 public class Event
 {
     public Event(string? id, string? ownerId, string name, string? description, 

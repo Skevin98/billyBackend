@@ -28,6 +28,20 @@ public class EventServiceImpl : IEventService
         return events;
     }
 
+    public async Task<List<Models.Event>> GetAll()
+    {
+        try
+        {
+            var events = await _eventRepository.GetAll();
+            return events;
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw new GraphQLException(e.Message);
+        }
+    }
+
     public async Task<Events.Models.Event> Create(EventInput eventInput)
     {
         try
