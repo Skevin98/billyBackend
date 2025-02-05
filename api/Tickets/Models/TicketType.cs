@@ -18,7 +18,7 @@ public class TicketType
 
     public TicketType() { }
 
-    [ID]
+    [GraphQLType(typeof(IdType))]
     [BsonRepresentation(BsonType.ObjectId)]
     public string Id { get; set; }
 

@@ -36,7 +36,7 @@ public class Event
         EventStatus = eventInput.EventStatus;
     }
 
-    [ID]
+    [GraphQLType(typeof(IdType))]
     [BsonRepresentation(BsonType.ObjectId)]
     public string? Id { get; set; }
     public string? OwnerId { get; set; }
@@ -49,5 +49,6 @@ public class Event
     [BsonRepresentation(BsonType.String)]
     public EventStatus EventStatus { get; set; }
 
+    [UseFiltering]
     public List<TicketType>? TicketTypes { get; set; } = [];
 }
