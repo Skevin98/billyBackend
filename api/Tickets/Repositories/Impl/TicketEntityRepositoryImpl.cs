@@ -55,12 +55,12 @@ public class TicketEntityRepositoryImpl : ITicketEntityRepository
 
     }
 
-    public async Task<TicketEntity> Update(string dummyUserId, string ticketId, TicketEntity payload)
+    public async Task<TicketEntity> Update(string userId, string ticketId, TicketEntity payload)
     {
         
         var filter = Builders<UserEntity>.Filter.And(
         [
-            Builders<UserEntity>.Filter.Eq(u => u.Id, dummyUserId),
+            Builders<UserEntity>.Filter.Eq(u => u.Id, userId),
             Builders<UserEntity>.Filter.Eq("TicketsPurchased.Id", ticketId)
         ]);
 

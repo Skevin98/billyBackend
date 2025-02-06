@@ -5,6 +5,6 @@ public enum TicketStatus
     CREATED,
     CANCELED,
     REFUNDED,
-    SOLD
-    
+    SOLD,
+    CHECKED
 }

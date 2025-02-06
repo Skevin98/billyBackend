@@ -49,5 +49,11 @@ public class Query
         var user = await userService.getUserById(id);
         return user;
     }
+
+    public async Task<List<UserEntity>> GetUsersTicketsByEventId(string eventId, ITicketEntityService ticketService)
+    {
+        var res = await ticketService.getUsersTicketsByEventId(eventId);
+        return res;
+    }
     
 }
